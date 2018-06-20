@@ -11,3 +11,47 @@
 
 	fmt.Println(c)
 	fmt.Println(err)
+
+
+
+
+
+
+func HalfFind(sliceInt []int, value int) int {
+	length := len(sliceInt)
+	middle := int(math.Floor(float64(len(sliceInt) / 2)))
+	if value == sliceInt[middle] {
+		return middle
+	}
+	if middle == length-1 {
+		return -1
+	}
+	if value < sliceInt[middle] {
+		return HalfFind(sliceInt[:middle-1], value)
+	}
+	if value > sliceInt[middle] {
+		return HalfFind(sliceInt[middle+1:], value)
+	}
+	return -1
+}
+
+func HalfFindRecursion(intSlice [] int, value int) int {
+	var mid int
+	low := 0
+	high := len(intSlice) - 1
+
+	for low <= high {
+		mid = int(math.Floor(float64((high + low) / 2)))
+
+		if value == intSlice[mid] {
+			return mid
+		}
+		if value < intSlice[mid] {
+			high = mid - 1
+		}
+		if value > intSlice[mid] {
+			low = mid + 1
+		}
+	}
+	return low
+}
