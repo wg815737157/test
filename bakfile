@@ -1,0 +1,13 @@
+
+	jsonStr := "{\"name\":\"wangg\",\"age\":29,\"title\":[\"coder\",\"gamer\"]}"
+
+	reader := strings.NewReader(jsonStr)
+
+	resp, err := http.Post("http://test.com", "application/json", reader)
+
+	content, err := ioutil.ReadAll(resp.Body)
+
+	c := string(content)
+
+	fmt.Println(c)
+	fmt.Println(err)
